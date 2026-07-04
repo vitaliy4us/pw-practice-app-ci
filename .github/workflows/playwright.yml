@@ -6,15 +6,15 @@ on:
     branches: [ main, master ]
 jobs:
   test:
-    timeout-minutes: 120
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
-        node-version: lts/*
+        node-version: 24
     - name: Install dependencies
-      run: npm install --force
+      run: npm ci --force
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps --force
     - name: Run Playwright tests
